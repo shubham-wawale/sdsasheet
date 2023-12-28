@@ -1,0 +1,21 @@
+Node findIntersection(LinkedList lla, LinkedList llb){
+      Node longer = null;
+      Node shorter = null;
+      if(lla.size > llb.size){
+          longer = lla.head;
+          shorter = llb.head;
+      } else {
+          longer = llb.head;
+          shorter = lla.head;
+      }
+      int k = Math.abs(lla.size-llb.size);
+      for(int i=0;i<k;i++){
+          longer = longer.next;
+      }
+      
+      while(shorter != longer){
+          shorter = shorter.next;
+          longer = longer.next;
+      }
+      return longer;
+  }

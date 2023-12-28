@@ -1,0 +1,16 @@
+public void deleteDups(LinkedList list){
+        Node tempNode = list.head;
+        Node prev = null;
+        HashSet hs = new HashSet();
+        while(tempNode!=null){
+            if(hs.contains(tempNode.value)){
+                //delete
+                prev.next = tempNode.next;
+                list.size--;
+            } else {
+                hs.add(tempNode.value);
+            }
+            prev = tempNode;
+            tempNode = tempNode.next;
+        }
+  }
