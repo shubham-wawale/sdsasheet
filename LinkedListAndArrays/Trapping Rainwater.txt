@@ -1,0 +1,61 @@
+class Solution {
+    public int trap(int[] height) {
+        int sum = 0;
+        int left = 0;
+        int right = height.length -1;
+        int leftMax = 0;
+        int rightMax = 0;
+        while(left<=right){
+            if(height[left]<=height[right]){
+                if(height[left]>=leftMax){
+                    leftMax = height[left];
+                } else {
+                    sum += leftMax - height[left];
+                }
+                left++;
+            } else {
+                if(height[right]>=rightMax){
+                    rightMax = height[right];
+                } else {
+                    sum += rightMax - height[right];
+                }
+                right--;
+            }
+        }
+
+        // This was my less optimal solution which passed 226 cases out of 330 
+        // int p1=0;
+        // int p2=1;
+        // while(p2<height.length-1){
+        //     int d = 0;
+        //     int secondMax = 0;
+        //     while(height[p2]<height[p1] && p2<height.length-1){
+        //         d++;
+        //         p2++;
+        //     }
+        //     for(int k=1;k<=d;k++){
+        //         if(height[p2]>=height[p1]){
+        //             sum+=(height[p1]-height[p1+k]);
+        //         } else {
+        //             secondMax = p2;
+        //             if(height[p2-k]>height[p2]){
+        //                 secondMax = p2-k;
+        //             }
+        //         }
+        //     }
+        //     if(height[p2]>=height[p1]){
+        //         p1=p2;
+        //         p2++;
+        //     } else {
+        //         p1++;
+        //         while(p1<secondMax){
+        //             sum+=height[secondMax]-height[p1];
+        //             p1++;
+        //         }
+        //         p2 =  secondMax+1;
+        //         p1 = secondMax;
+        //     }
+        // }
+        return sum;
+    }
+}
