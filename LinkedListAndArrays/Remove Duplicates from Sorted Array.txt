@@ -1,0 +1,29 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+
+        //MY OWN SOLUTION
+        int currentDuplicate = nums[0];
+        int j = 0;
+        for(int i=0; i<nums.length; i++){
+            if(currentDuplicate!=nums[i]){
+                nums[j] = currentDuplicate;
+                j++;
+                currentDuplicate = nums[i];
+            }
+            if(i==nums.length-1){
+                nums[j] = currentDuplicate;
+            }
+        }
+        return j+1;
+
+        //OPTIMAL SOLUTION
+        // int i = 0;
+        // for (int j = 1; j < arr.length; j++) {
+        //     if (arr[i] != arr[j]) {
+        //         i++;
+        //         arr[i] = arr[j];
+        //     }
+        // }
+        // return i + 1;
+    }
+}
