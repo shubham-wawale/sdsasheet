@@ -1,0 +1,60 @@
+class Solution {
+    public void sortColors(int[] nums) {
+        int[] result = new int[nums.length];
+        int zeroCount =  0;
+        int oneCount = 0;
+        int twoCount =  0;
+        
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]==0){
+                zeroCount++;
+            }
+            if(nums[i]==1){
+                oneCount++;            
+            }
+            if(nums[i]==2){
+                twoCount++;               
+            }
+        }
+        int z = 0;
+        int o = zeroCount;
+        int t = oneCount + zeroCount;
+        
+        if(zeroCount>0){
+            for(int i=0; i<nums.length; i++){
+            if(nums[i]==0){
+                if(nums[z]!=0){
+                    int temp = nums[z];
+                nums[z] = nums[i];
+                nums[i] = temp;
+                }
+                z++;
+            }
+        }
+        }
+        if(oneCount > 0){
+            for(int i=o; i<nums.length; i++){
+            if(nums[i]==1){
+                if(nums[o]!=1){
+                    int temp = nums[o];
+                nums[o] = nums[i];
+                nums[i] = temp;
+                }
+                o++;
+            }
+        }
+        }
+        if(twoCount > 0){
+            for(int i=t; i<nums.length; i++){
+            if(nums[i]==2){
+                if(nums[t]!=2){
+                    int temp = nums[t];
+                nums[t] = nums[i];
+                nums[i] = temp;
+                }
+                t++;
+            }
+        }
+        }
+    }
+}
