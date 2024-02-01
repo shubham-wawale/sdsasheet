@@ -1,0 +1,30 @@
+// Calculate the frequency string of each string like "a1c3s4" and so on
+// compare both frequency strings
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        String fs = getFrequencyString(s);
+        String ft = getFrequencyString(t);
+        if(fs.equals(ft)){
+            return true;
+        }
+        return false;
+        
+    }
+
+    private String getFrequencyString(String str) {
+        int[] freq = new int[26];
+        for(char c: str.toCharArray()){
+            freq[c-'a'] +=1;
+        }
+        char c =  'a';
+        StringBuilder frequencyString =  new StringBuilder();
+        for(int i: freq) {
+            frequencyString.append(c);
+            frequencyString.append(i);
+            c++;
+        }
+
+        return frequencyString.toString();
+    }
+}
