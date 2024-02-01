@@ -1,0 +1,23 @@
+// add all elements to the Set
+// if the previous of an element does not exist, start a new length,terminate when no next
+// return the longest length
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> s = new HashSet<>();
+        for(Integer num: nums){
+            s.add(num);
+        }
+        int longest = 0;
+        for(Integer num: nums){
+            int length=0;
+            if(!s.contains(num-1)){
+                while(s.contains(num+length)){
+                    length++;
+                }
+            }
+            longest = Math.max(longest, length);
+        }
+        return longest;
+    }
+}
