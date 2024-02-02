@@ -1,0 +1,25 @@
+// the intuition is to maintain two pointers that represent the two ends of the container
+// calculate the area by taking the lowest of the heights
+// increase/decrease the pointer which has less height to increase area in the next iteration
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        int start = 0;
+        int end = height.length-1;
+        int maxArea = 0;
+        while(start<end){
+            int area = 0;
+            if(height[start]<height[end]){
+                area = height[start]*(end-start);
+                start++;
+            } else {
+                area = height[end]*(end-start);
+                end--;
+            }
+            maxArea = Math.max(maxArea, area);
+            System.out.println(area);
+        }
+        return maxArea;
+    }
+}
