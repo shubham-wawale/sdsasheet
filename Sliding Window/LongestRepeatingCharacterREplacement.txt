@@ -1,0 +1,26 @@
+//In this sliding window, we keep track of the character count in our sliding window
+//We also maintain a variable for the most occuring character in the window
+//we increase the sliding window as long as the number of different characters apart from the 
+//most occuring character is <= k
+//if that count goes above k, we decrease the length of sliding window from the front
+
+class Solution {
+    public int characterReplacement(String s, int k) {
+        int[] arr = new int[26];
+        int maxf = 0;
+        int max = 0;
+        int l = 0;
+        
+        for(int r=0; r<s.length(); r++){
+            arr[s.charAt(r)-'A']++;
+            maxf = Math.max(maxf, arr[s.charAt(r)-'A']);
+            if(r-l+1 - maxf > k){
+                arr[s.charAt(l)-'A']--;
+                l++;
+            }
+            max = Math.max(max, r-l+1);
+        }
+        
+        return max;
+    }
+}
